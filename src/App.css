@@ -1,28 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Mirza|Lato');
+
 .App {
   text-align: center;
+  /*font-family: 'Lato', sans-serif;*/
+  font-family: 'Open Sans', sans-serif;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+
+/** HEADER **/
+
+
+.photo {
+  animation: photo-spin infinite 20s linear;
   height: 80px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
+@keyframes photo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  
+  background-color: #011627;
+  height: 300px;
+  padding: 20px;
+  color: #F2F4F3;
+}
+
+.header-left {
+  flex-grow: 1;
+  flex-basis: 50%;
+
+  text-align: right;
+  line-height: 0.1em;
+}
+
+.title { /* Name */
+  font-family: 'Mirza', cursive;
+  font-size: 3em;
+  letter-spacing: 3px;
+}
+
+.subtitle { /* Name subtitle */
+  font-size: 1.3em;
+  letter-spacing: 5px;
+}
+
+.header-right { /* Photo */
+  flex-grow: 1;
+  flex-basis: 50%;
+}
+
+
+/** CONNECTION BUTTONS **/
+
+
+.connections {
+  margin: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.connection {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  text-align: center;
+  /*padding: 20px;*/
+  /*margin: 50px;*/
+
+  border: 5px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 3px grey;
+  background-color: grey;
+}
+
+.connection-text {
+  display: inline-block;
+  /*vertical-align: middle;*/
+  width: 100%;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  margin-top:-0.6em;
 }
