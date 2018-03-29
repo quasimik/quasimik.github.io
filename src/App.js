@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import MediaQuery from 'react-responsive';
 import './App.css';
 
 // import logo from './logo.svg';
@@ -14,11 +15,11 @@ import iconPdf from './icons/pdf.svg';
 function Header() {
   return (
     <header className="header">
-      <div className="header-left">
+      <div className="header-text">
         <p className="title">Michael Liu</p>
         <p className="subtitle">please hire me</p>
       </div>
-      <div className="header-right">
+      <div className="header-logo">
         <img src={logo} className="photo" alt="logo" />
       </div>
     </header>

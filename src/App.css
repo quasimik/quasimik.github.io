@@ -22,6 +22,8 @@
 
 .header {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   
   background-color: #011627;
@@ -30,7 +32,7 @@
   color: #F2F4F3;
 }
 
-.header-left {
+.header-text {
   flex-grow: 1;
   flex-basis: 50%;
 
@@ -49,7 +51,7 @@
   letter-spacing: 5px;
 }
 
-.header-right { /* Photo */
+.header-logo { /* Photo */
   flex-grow: 1;
   flex-basis: 50%;
 }
@@ -61,6 +63,7 @@
 .connections {
   margin: 100px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 
@@ -70,7 +73,7 @@
   width: 100px;
   text-align: center;
   /*padding: 20px;*/
-  /*margin: 50px;*/
+  margin: 20px;
 
   border: 5px solid white;
   border-radius: 50%;
@@ -85,4 +88,26 @@
   padding-top: 50%;
   padding-bottom: 50%;
   margin-top:-0.6em;
+}
+
+/*
+ * -- TABLET & BELOW MEDIA QUERIES --
+ */
+ 
+@media (max-width: 64em) {
+    
+}
+
+/*
+ * -- MOBILE & BELOW MEDIA QUERIES --
+ */
+ 
+@media (max-width: 48em) {
+    .header {
+      flex-direction: column;
+    }
+
+    .header-text {
+      text-align: center;
+    }
 }
