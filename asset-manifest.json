@@ -1,13 +1,17 @@
 {
-  "main.css": "static/css/main.54506199.css",
-  "main.css.map": "static/css/main.54506199.css.map",
-  "main.js": "static/js/main.83d5ab90.js",
-  "main.js.map": "static/js/main.83d5ab90.js.map",
+  "main.css": "static/css/main.9e783704.css",
+  "main.css.map": "static/css/main.9e783704.css.map",
+  "main.js": "static/js/main.7501d500.js",
+  "main.js.map": "static/js/main.7501d500.js.map",
+  "static/media/busboss.png": "static/media/busboss.33b97869.png",
   "static/media/github.svg": "static/media/github.0b5b9fad.svg",
   "static/media/gmail.svg": "static/media/gmail.0eca9316.svg",
   "static/media/google_maps.svg": "static/media/google_maps.33f98a98.svg",
+  "static/media/halecoin.png": "static/media/halecoin.03d210b6.png",
   "static/media/head.png": "static/media/head.2510456d.png",
   "static/media/linkedin.svg": "static/media/linkedin.aa80ba20.svg",
   "static/media/medium.svg": "static/media/medium.089b3ecd.svg",
+  "static/media/minisce.png": "static/media/minisce.24c113ec.png",
+  "static/media/mswords.jpg": "static/media/mswords.506ecc1d.jpg",
   "static/media/pdf.svg": "static/media/pdf.f902d7f5.svg"
 }
