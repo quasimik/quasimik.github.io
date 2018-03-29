@@ -162,12 +162,95 @@ function Projects(props) {
   return <div className="projects">{arr}</div>;
 }
 
+/*
+ * Large display mode:
+ *   Button with image. Radius is specified (for circular buttons). Border is specified. Background image is specified.
+ *   If hovering over button, image blurs and description text shows.
+ * Small display mode (at specified breakpoint):
+ *   Block-level component. Image and description side-by-side.
+ *
+ * Props:
+ *   type: Type of the component, for custom styling
+ *   breakpoint: Large -> small display mode breakpoint
+ *   url: Button URL
+ *   imgUrl: Image URL
+ *   title: Text title
+ *   desc: Text description
+ *   //Large display mode border & radius
+ *   ...
+ *   
+ * Styles to be defined in .css:
+ *   .rhb-lg
+ *   .rhb-sm
+ *   .rhb-text
+ *   
+ *   
+*/
+class ResponsiveHoverButton extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hover: false,
+    };
+  }
+
+  onMouseEnterHandler = () => { // Funky syntax to bind "this"
+    this.setState({hover: true});
+  }
+
+  onMouseLeaveHandler = () => {
+    this.setState({hover: false});
+  }
+  
+  attrs = (mobileAndBelow) => {
+    let str = " rhb-type-" + this.props.type;
+
+    if (mobileAndBelow)
+      str += " rhb-sm";
+    else
+      str += " rhb-lg";
+
+    if (this.state.hover)
+      str += " rhb-hover";
+
+    return str;
+  }
+
+  render() {
+    return (
+      <MediaQuery maxWidth={this.props.breakpoint}>
+      {(mobileAndBelow) => {
+        return (
+          <a href={this.props.url} className={"rhb" + this.attrs(mobileAndBelow)}
+              onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+            <div className={"rhb-img-ctnr" + this.attrs(mobileAndBelow)}>
+              <img className={"rhb-img" + this.attrs(mobileAndBelow)} src={this.props.imgUrl} />
+            </div>
+            <div className={"rhb-txt-ctnr" + this.attrs(mobileAndBelow)}>
+              <p className={"rhb-txt rhb-txt-title" + this.attrs(mobileAndBelow)}>{this.props.title}</p>
+              <p className={"rhb-txt rhb-txt-desc" + this.attrs(mobileAndBelow)}>{this.props.desc}</p>
+            </div>
+          </a>
+        );
+      }}
+      </MediaQuery>
+    );
+  }
+}
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Header />
         <Connections />
+        <ResponsiveHoverButton 
+          type="test" 
+          breakpoint="48em" 
+          url="lmoa" 
+          imgUrl={projimgMswords} 
+          title="This is a Title" 
+          desc="Wuowuoweuro weur oweurowuer oweuor owe rouwoeru owuero uw" />
         <Projects />
       </div>
     );
