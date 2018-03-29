@@ -107,6 +107,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  /*max-width: 1200px;*/ /*TODO*/
 
   background-color: #cddddd;
 
@@ -133,16 +134,6 @@
   text-decoration: none;
 }
 
-.project:hover {
-  border: 10px solid #051014;
-  background-color: #051014;
-  background-image: none;
-}
-
-.project:hover .project-text {
-  display: block;
-}
-
 .project-text {
   display: none;
 
@@ -162,6 +153,76 @@
   font-size: 1.7em;
 }
 
+@media (min-width: 48em) {
+  
+  .project:hover {
+    border: 10px solid #051014;
+    background-color: #051014;
+    background-image: none;
+  }
+
+  .project:hover .project-text {
+    display: initial;
+  }
+}
+
+@media (max-width: 48em) {
+    .projects {
+      display: block;
+      padding: 70px;
+    }
+    
+    .project {
+      display: flex;
+      flex-direction: row; /* Different structure. Instead of column text, it's row img + text. */
+
+      height: auto;
+      width: auto;
+      text-align: left;
+      padding: 20px;
+      margin: 30px;
+
+      border: 0px;
+      /*border: 1px solid #051014;*/
+      /*border-bottom: 1px solid #051014;*/
+      /*box-shadow: 0 0 2px 0px #051014;*/
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    }
+
+    .project-image-container-mobile-down {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 30%;
+      height: auto;
+    }
+
+    .project-image-mobile-down {
+      width: 100%;
+      height: auto;
+    }
+
+    .project-text-container-mobile-down {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 70%;
+      margin-left: 20px;
+    }
+
+    .project-text {
+      display: inline;
+      color: #051014;
+      text-align: left;
+      font-size: 1.2em;
+    }
+
+    .project-title {
+      font-size: 1.5em;
+    }
+}
+
 
 /*
  * -- TABLET & BELOW MEDIA QUERIES --
@@ -179,15 +240,60 @@
 
  
 @media (max-width: 48em) {
-    .header {
-      flex-direction: column;
-    }
+  .header {
+    flex-direction: column;
+  }
 
-    .header-text {
-      text-align: center;
-    }
+  .header-text {
+    text-align: center;
 
-    .photo {
-      height: 120px;
-    }
+  }
+
+  .photo {
+    height: 120px;
+  }
 }
+
+
+/*
+ * -- TINY & BELOW MEDIA QUERIES --
+*/
+
+ 
+@media (max-width: 32em) {
+
+  .header {
+    height: 250px;
+  }
+
+  .title { /* Name */
+    font-size: 2em;
+  }
+
+  .subtitle { /* Name subtitle */
+    font-size: 1em;
+  }
+
+  .photo {
+    height: 100px;
+  }
+
+  .projects {
+    padding: 30px;
+  }
+
+  .project {
+    /*padding: 10px;*/
+    margin: 20px;
+  }
+
+  .project-text {
+    font-size: 1em;
+  }
+
+  .project-title {
+    font-size: 1.2em;
+  }
+}
+
+

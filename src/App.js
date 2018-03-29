@@ -31,6 +31,20 @@ function bgimg(imgUrl) {
  *  React components
 */
 
+class SpinningHead extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      frequency: 0.05,
+    };
+  }
+
+  render() {
+    let opts = {}; // TODO: click to make head spin faster
+    return <img src={logo} className="photo" alt="logo" {...opts} />;
+  }
+}
+
 function Header() {
   return (
     <header className="header">
@@ -39,7 +53,7 @@ function Header() {
         <p className="subtitle">Please hire me.</p>
       </div>
       <div className="header-logo">
-        <img src={logo} className="photo" alt="logo" />
+        <SpinningHead />
       </div>
     </header>
   );
@@ -72,7 +86,7 @@ class Project extends Component { // Needs to be a class to store hover state
     };
   }
 
-  onMouseEnterHandler = () => {
+  onMouseEnterHandler = () => { // Funky syntax to bind "this"
     this.setState({hover: true});
   }
 
@@ -82,12 +96,29 @@ class Project extends Component { // Needs to be a class to store hover state
   
   render() {
     return (
-      <a href={this.props.project.url} className="project" 
-          onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler} 
-          style={bgimg(this.state.hover ? null : this.props.project.img)}>
-        <p className="project-text project-title">{this.props.project.name}</p>
-        <p className="project-text">{this.props.project.desc}</p>
-      </a>
+      <MediaQuery maxWidth="48em">
+      {(mobileAndBelow) => {
+        if (mobileAndBelow) return ( // Mobile(-): Images and description side-by-side
+          <a href={this.props.project.url} className="project">
+            <div className="project-image-container-mobile-down">
+              <img className="project-image-mobile-down" src={this.props.project.img} />
+            </div>
+            <div className="project-text-container-mobile-down">
+              <p className="project-text project-title">{this.props.project.name}</p>
+              <p className="project-text">{this.props.project.desc}</p>
+            </div>
+          </a>
+        );
+        else /* (!mobileAndBelow) */ return ( // Tablet(+): Hover over images to show description
+          <a href={this.props.project.url} className="project" 
+              onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler} 
+              style={bgimg(this.state.hover ? null : this.props.project.img)}>
+            <p className="project-text project-title">{this.props.project.name}</p>
+            <p className="project-text">{this.props.project.desc}</p>
+          </a>
+        );
+      }}
+      </MediaQuery>
     );
   }
 }
@@ -104,7 +135,7 @@ function Projects(props) {
       name: "Letterpress-MCTS", 
       desc: "An AI agent employing Monte Carlo Tree Search (MCTS/UCT).", 
       img: projimgMswords, 
-      url: "https://github.com/quasimik/mswords" 
+      url: "https://github.com/quasimik/letterpress-mcts" 
     },
     { 
       name: "Minisce", 
