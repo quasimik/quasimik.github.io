@@ -10,9 +10,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "publish": "git push origin `git subtree split --prefix build -b master`:master --force",
-    "bp": "npm run build && npm run publish",
+    "deploy": "node_modules/gh-pages/bin/gh-pages -d build -b master",
+    "build-deploy": "npm run build && npm run deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }

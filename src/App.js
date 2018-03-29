@@ -53,7 +53,7 @@ function Connections() {
 function Projects(props) {
   for (var i=0; i<5; i++) {
     return (
-      <p>lmao {i}</p>
+      <p>lmao 2</p>
     );
   }
 }
