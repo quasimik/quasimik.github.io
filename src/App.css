@@ -1,24 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Mirza|Lato');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Mirza|Quattrocento+Sans:400,700');
 
 .App {
   text-align: center;
-  /*font-family: 'Lato', sans-serif;*/
   font-family: 'Open Sans', sans-serif;
 }
 
 
-/** HEADER **/
+/*
+ * -- HEADER --
+*/
 
-
-.photo {
-  animation: photo-spin infinite 20s linear;
-  height: 80px;
-}
-
-@keyframes photo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 .header {
   display: flex;
@@ -26,10 +17,10 @@
   flex-wrap: wrap;
   align-items: center;
   
-  background-color: #011627;
+  background-color: #051014;
   height: 300px;
   padding: 20px;
-  color: #F2F4F3;
+  color: #85c7f2;
 }
 
 .header-text {
@@ -56,15 +47,30 @@
   flex-basis: 50%;
 }
 
+.photo {
+  animation: photo-spin infinite 20s linear;
+  height: 150px;
+}
 
-/** CONNECTION BUTTONS **/
+@keyframes photo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/*
+ * -- CONNECTIONS --
+*/
 
 
 .connections {
-  margin: 100px;
+  padding: 0px 100px 100px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+
+  background-color: #051014;
+  color: #cddddd;
 }
 
 .connection {
@@ -75,10 +81,10 @@
   /*padding: 20px;*/
   margin: 20px;
 
-  border: 5px solid white;
+  border: 5px solid #85c7f2;
   border-radius: 50%;
-  box-shadow: 0 0 3px grey;
-  background-color: grey;
+  /*box-shadow: 0 0 3px 1px #bbb;*/
+  background-color: #cddddd;
 }
 
 .connection-text {
@@ -90,17 +96,87 @@
   margin-top:-0.6em;
 }
 
+
+/*
+ * -- PROJECTS --
+*/
+
+
+.projects {
+  padding: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  background-color: #cddddd;
+
+  color: #85c7f2;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 250px;
+  width: 250px;
+  text-align: center;
+  margin: 30px;
+  padding: 5px;
+
+  border: 10px solid #cddddd;
+  /*box-shadow: 0 0 2px 0px #051014;*/
+  /*border: 1px solid #1e152a;*/
+  background-color: inherit;
+  background-size: cover;
+
+  text-decoration: none;
+}
+
+.project:hover {
+  border: 10px solid #051014;
+  background-color: #051014;
+  background-image: none;
+}
+
+.project:hover .project-text {
+  display: block;
+}
+
+.project-text {
+  display: none;
+
+  margin: 10px;
+
+  color: #85c7f2;
+  text-align: center;
+  font-family: 'Quattrocento Sans', sans-serif;
+  font-weight: 400;
+  font-size: 1.5em;
+}
+
+.project-title {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 700;
+  font-size: 1.7em;
+}
+
+
 /*
  * -- TABLET & BELOW MEDIA QUERIES --
- */
+*/
+
  
 @media (max-width: 64em) {
     
 }
 
+
 /*
  * -- MOBILE & BELOW MEDIA QUERIES --
- */
+*/
+
  
 @media (max-width: 48em) {
     .header {
@@ -109,5 +185,9 @@
 
     .header-text {
       text-align: center;
+    }
+
+    .photo {
+      height: 120px;
     }
 }
