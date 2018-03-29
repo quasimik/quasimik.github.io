@@ -135,7 +135,7 @@
 @media (max-width: 48em) {
 
   .connections {
-    padding: 0px 80px 80;
+    padding: 0px 60px 60px;
   }
 
   .connection {
@@ -147,7 +147,7 @@
 @media (max-width: 32em) {
 
   .connections {
-    padding: 0px 60px 60;
+    padding: 0px 30px 30px;
   }
 
   .connection {
