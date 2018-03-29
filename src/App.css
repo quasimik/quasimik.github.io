@@ -246,11 +246,19 @@
 
   .header-text {
     text-align: center;
-
   }
 
   .photo {
     height: 120px;
+  }
+
+  .connections {
+    padding: 0px 80px 80;
+  }
+
+  .connection {
+    height: 80px;
+    width: 80px;
   }
 }
 
@@ -276,6 +284,15 @@
 
   .photo {
     height: 100px;
+  }
+
+  .connections {
+    padding: 0px 60px 60;
+  }
+
+  .connection {
+    height: 60px;
+    width: 60px;
   }
 
   .projects {
