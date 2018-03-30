@@ -1,0 +1,141 @@
+/*
+ * -- REACT COMPONENT: RESPONSIVE HOVER BUTTON --
+*/
+
+.rhb {
+  margin: 2em; /* Customizable */
+
+  display: flex;
+  flex-direction: row;
+
+  text-decoration: none;
+}
+
+.rhb-img-ctnr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rhb-img {
+  width: 100%;
+  height: auto;
+}
+
+.rhb-txt-ctnr {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rhb-txt {
+  margin: 0.5em; /* Customizable */
+
+  font-family: 'Quattrocento Sans', sans-serif;
+  color: #85c7f2;
+}
+
+.rhb-txt-title {
+  text-transform: lowercase;
+  font-variant: small-caps;
+  font-weight: 700;
+}
+
+.rhb-txt-desc {
+  font-weight: 400;
+}
+
+/* lg */
+
+.rhb.rhb-lg {
+  position: relative; /* Needed for absolute positioning of the text container */
+
+  /* Large icon height & width *should be* specified in custom styling using the type name:
+   * .rhb-type-[NAME].rhb.rhb-lg {height:250px;width:250px;}
+  */
+
+  height: 250px; /* Customizable */
+  width: 250px; /* Customizable */
+}
+
+.rhb-img-ctnr.rhb-lg {
+  width: 100%;
+}
+
+.rhb-txt-ctnr.rhb-lg {
+  /* Need these to make the overlay properly sized */
+  position: absolute;
+  width: auto;
+  height: auto;
+  top: 0px;
+  bottom: 0px;
+
+  padding: 20px; /* Customizable */
+  background-color: rgba(0, 0, 0, 0.85);
+
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+.rhb-txt.rhb-lg {
+  text-align: center;
+}
+
+.rhb-txt-title.rhb-lg {
+  font-size: 1.7em;
+}
+
+.rhb-txt-desc.rhb-lg {
+  font-size: 1.4em;
+}
+
+/* lg hover */
+
+.rhb-txt-ctnr.rhb-lg.rhb-hover {
+  opacity: 1;
+  transition: 0.1s ease;
+}
+
+/* sm */
+
+.rhb.rhb-sm {
+  height: auto;
+  width: auto;
+  padding: 1em; /* Customizable */
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rhb-img-ctnr.rhb-sm {
+  width: 30%;
+}
+
+.rhb-txt-ctnr.rhb-sm {
+  justify-content: flex-start;
+  
+  width: 70%;
+  margin-left: 1em; /* Customizable */
+}
+
+.rhb-txt.rhb-sm {
+  text-align: left;
+  color: #051014;
+}
+
+.rhb-txt-title.rhb-sm {
+  font-size: 1.5em;
+}
+
+.rhb-txt-desc.rhb-sm {
+  font-size: 1.2em;
+}
+
+/* Circular rhb option */
+
+.rhb-img.rhb-circle {
+  border-radius: 50%;
+}
+
+.rhb-txt-ctnr.rhb-lg.rhb-circle {
+  border-radius: 50%;
+}

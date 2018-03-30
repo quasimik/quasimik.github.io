@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
+import ResponsiveHoverButton from './ResponsiveHoverButton.js';
 
 import './App.css';
 import logo from './head.png';
@@ -78,51 +79,6 @@ function Connections() {
   return <div className="connections">{arr}</div>;
 }
 
-class Project extends Component { // Needs to be a class to store hover state
-  constructor(props) {
-    super(props);
-    this.state = {
-      hover: false,
-    };
-  }
-
-  onMouseEnterHandler = () => { // Funky syntax to bind "this"
-    this.setState({hover: true});
-  }
-
-  onMouseLeaveHandler = () => {
-    this.setState({hover: false});
-  }
-  
-  render() {
-    return (
-      <MediaQuery maxWidth="48em">
-      {(mobileAndBelow) => {
-        if (mobileAndBelow) return ( // Mobile(-): Images and description side-by-side
-          <a href={this.props.project.url} className="project">
-            <div className="project-image-container-mobile-down">
-              <img className="project-image-mobile-down" src={this.props.project.img} />
-            </div>
-            <div className="project-text-container-mobile-down">
-              <p className="project-text project-title">{this.props.project.name}</p>
-              <p className="project-text">{this.props.project.desc}</p>
-            </div>
-          </a>
-        );
-        else /* (!mobileAndBelow) */ return ( // Tablet(+): Hover over images to show description
-          <a href={this.props.project.url} className="project" 
-              onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler} 
-              style={bgimg(this.state.hover ? null : this.props.project.img)}>
-            <p className="project-text project-title">{this.props.project.name}</p>
-            <p className="project-text">{this.props.project.desc}</p>
-          </a>
-        );
-      }}
-      </MediaQuery>
-    );
-  }
-}
-
 function Projects(props) {
   const projs = [
     { 
@@ -157,86 +113,19 @@ function Projects(props) {
     },
   ];
 
-  const arr = projs.map(proj => <Project project={proj} />);
+  const arr = projs.map(proj => 
+    <ResponsiveHoverButton 
+      type="project" 
+      breakpoint="48em" 
+      url={proj.url} 
+      imgUrl={proj.img} 
+      title={proj.name}
+      desc={proj.desc} />);
 
   return <div className="projects">{arr}</div>;
 }
 
-/*
- * Large display mode:
- *   Button with image. Radius is specified (for circular buttons). Border is specified. Background image is specified.
- *   If hovering over button, image blurs and description text shows.
- * Small display mode (at specified breakpoint):
- *   Block-level component. Image and description side-by-side.
- *
- * Props:
- *   type: Type of the component, for custom styling
- *   breakpoint: Large -> small display mode breakpoint
- *   url: Button URL
- *   imgUrl: Image URL
- *   title: Text title
- *   desc: Text description
- *   //Large display mode border & radius
- *   ...
- *   
- * Styles to be defined in .css:
- *   .rhb-lg
- *   .rhb-sm
- *   .rhb-text
- *   
- *   
-*/
-class ResponsiveHoverButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      hover: false,
-    };
-  }
 
-  onMouseEnterHandler = () => { // Funky syntax to bind "this"
-    this.setState({hover: true});
-  }
-
-  onMouseLeaveHandler = () => {
-    this.setState({hover: false});
-  }
-  
-  attrs = (mobileAndBelow) => {
-    let str = " rhb-type-" + this.props.type;
-
-    if (mobileAndBelow)
-      str += " rhb-sm";
-    else
-      str += " rhb-lg";
-
-    if (this.state.hover)
-      str += " rhb-hover";
-
-    return str;
-  }
-
-  render() {
-    return (
-      <MediaQuery maxWidth={this.props.breakpoint}>
-      {(mobileAndBelow) => {
-        return (
-          <a href={this.props.url} className={"rhb" + this.attrs(mobileAndBelow)}
-              onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
-            <div className={"rhb-img-ctnr" + this.attrs(mobileAndBelow)}>
-              <img className={"rhb-img" + this.attrs(mobileAndBelow)} src={this.props.imgUrl} />
-            </div>
-            <div className={"rhb-txt-ctnr" + this.attrs(mobileAndBelow)}>
-              <p className={"rhb-txt rhb-txt-title" + this.attrs(mobileAndBelow)}>{this.props.title}</p>
-              <p className={"rhb-txt rhb-txt-desc" + this.attrs(mobileAndBelow)}>{this.props.desc}</p>
-            </div>
-          </a>
-        );
-      }}
-      </MediaQuery>
-    );
-  }
-}
 
 class App extends Component {
   render() {
@@ -244,13 +133,6 @@ class App extends Component {
       <div className="App">
         <Header />
         <Connections />
-        <ResponsiveHoverButton 
-          type="test" 
-          breakpoint="48em" 
-          url="lmoa" 
-          imgUrl={projimgMswords} 
-          title="This is a Title" 
-          desc="Wuowuoweuro weur oweurowuer oweuor owe rouwoeru owuero uw" />
         <Projects />
       </div>
     );
