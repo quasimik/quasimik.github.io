@@ -62,18 +62,23 @@ function Header() {
 
 function Connections() {
   const conns = [
-    { img: iconGmaps, url: "https://goo.gl/maps/MaMDzFZ8jtB2" },
-    { img: iconGmail, url: "mailto:mike666234@gmail.com" },
-    { img: iconGithub, url: "https://github.com/quasimik" },
-    { img: iconMedium, url: "https://medium.com/@quasimik" },
-    { img: iconLinkedin, url: "https://www.linkedin.com/in/quasimik" },
-    { img: iconPdf, url: "https://drive.google.com/file/d/0B0k7_-vr1Q5MbVlGN252V3VaMXc/view" },
+    { name: "Location", img: iconGmaps, url: "https://goo.gl/maps/MaMDzFZ8jtB2" },
+    { name: "Email", img: iconGmail, url: "mailto:mike666234@gmail.com" },
+    { name: "Github", img: iconGithub, url: "https://github.com/quasimik" },
+    { name: "Medium", img: iconMedium, url: "https://medium.com/@quasimik" },
+    { name: "LinkedIn", img: iconLinkedin, url: "https://www.linkedin.com/in/quasimik" },
+    { name: "Resume", img: iconPdf, url: "https://drive.google.com/file/d/0B0k7_-vr1Q5MbVlGN252V3VaMXc/view" },
   ];
 
   const arr = conns.map(conn => 
-    <a href={conn.url} className="connection" key={conn.url} style={bgimg(conn.img)}>
-      <p className="connection-text"></p>
-    </a>
+    <ResponsiveHoverButton 
+      type="connection" 
+      circle={true} 
+      breakpoint="32em" 
+      url={conn.url} 
+      imgUrl={conn.img} 
+      title={conn.name} 
+    />
   );
 
   return <div className="connections">{arr}</div>;
@@ -120,7 +125,9 @@ function Projects(props) {
       url={proj.url} 
       imgUrl={proj.img} 
       title={proj.name}
-      desc={proj.desc} />);
+      desc={proj.desc} 
+    />
+  );
 
   return <div className="projects">{arr}</div>;
 }

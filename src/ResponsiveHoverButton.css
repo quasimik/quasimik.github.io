@@ -1,5 +1,6 @@
 /*
- * -- REACT COMPONENT: RESPONSIVE HOVER BUTTON --
+ * React component: ResponsiveHoverButton
+ * Styles
 */
 
 .rhb {
@@ -63,14 +64,16 @@
 }
 
 .rhb-txt-ctnr.rhb-lg {
-  /* Need these to make the overlay properly sized */
+  /* Need these to make the overlay is properly sized */
   position: absolute;
   width: auto;
   height: auto;
   top: 0px;
   bottom: 0px;
+  left: 0px;
+  right: 0px;
 
-  padding: 20px; /* Customizable */
+  padding: 1em; /* Customizable */
   background-color: rgba(0, 0, 0, 0.85);
 
   opacity: 0;
@@ -82,11 +85,11 @@
 }
 
 .rhb-txt-title.rhb-lg {
-  font-size: 1.7em;
+  font-size: 1.7em; /* Customizable */
 }
 
 .rhb-txt-desc.rhb-lg {
-  font-size: 1.4em;
+  font-size: 1.4em; /* Customizable */
 }
 
 /* lg hover */
@@ -107,13 +110,13 @@
 }
 
 .rhb-img-ctnr.rhb-sm {
-  width: 30%;
+  width: 30%; /* Customizable */
 }
 
 .rhb-txt-ctnr.rhb-sm {
   justify-content: flex-start;
   
-  width: 70%;
+  width: 70%; /* Customizable */
   margin-left: 1em; /* Customizable */
 }
 
@@ -123,11 +126,11 @@
 }
 
 .rhb-txt-title.rhb-sm {
-  font-size: 1.5em;
+  font-size: 1.5em; /* Customizable */
 }
 
 .rhb-txt-desc.rhb-sm {
-  font-size: 1.2em;
+  font-size: 1.2em; /* Customizable */
 }
 
 /* Circular rhb option */

@@ -13,7 +13,7 @@
  *   url: string. Button URL.
  *   imgUrl: string. URL where image is at.
  *   title: string. Text title.
- *   desc: string. Text description.
+ *   desc: string/null. Text description.
  *   //Large display mode border & radius
  *   ...
  *   
@@ -65,6 +65,25 @@ class ResponsiveHoverButton extends Component {
   }
 
   render() {
+    let desc = (tabletAndAbove) => { // Conditionally render description text
+      if (!this.props.desc) {
+        return;
+      }
+      return <p className={"rhb-txt rhb-txt-desc" + this.attrs(tabletAndAbove)}>{this.props.desc}</p>;
+    }
+
+    let text = (tabletAndAbove) => { // Conditionally render text
+      if (!this.props.title) {
+        return;
+      }
+      return (
+        <div className={"rhb-txt-ctnr" + this.attrs(tabletAndAbove)}>
+          <p className={"rhb-txt rhb-txt-title" + this.attrs(tabletAndAbove)}>{this.props.title}</p>
+          {desc(tabletAndAbove)}
+        </div>
+      );
+    }
+
     return (
       <MediaQuery minWidth={this.props.breakpoint}>
       {(tabletAndAbove) => {
@@ -74,10 +93,7 @@ class ResponsiveHoverButton extends Component {
             <div className={"rhb-img-ctnr" + this.attrs(tabletAndAbove)}>
               <img className={"rhb-img" + this.attrs(tabletAndAbove)} src={this.props.imgUrl} />
             </div>
-            <div className={"rhb-txt-ctnr" + this.attrs(tabletAndAbove)}>
-              <p className={"rhb-txt rhb-txt-title" + this.attrs(tabletAndAbove)}>{this.props.title}</p>
-              <p className={"rhb-txt rhb-txt-desc" + this.attrs(tabletAndAbove)}>{this.props.desc}</p>
-            </div>
+            {text(tabletAndAbove)}
           </a>
         );
       }}
